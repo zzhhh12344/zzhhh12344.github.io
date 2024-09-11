@@ -1,0 +1,924 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Leo Zhang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="OverviewIn the project, our team created four types of microservices for data collection, pre-processing, visualisation and modelling. These microservices are flexible and can be utilised to build dat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building FinTech Microservices for Data Analytics and Automated Machine Learning">
+<meta property="og:url" content="http://example.com/2024/09/10/automl/index.html">
+<meta property="og:site_name" content="Leo Zhang">
+<meta property="og:description" content="OverviewIn the project, our team created four types of microservices for data collection, pre-processing, visualisation and modelling. These microservices are flexible and can be utilised to build dat">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Overview.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/System_Architecture.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Data_Cleaning_Buttons.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Data_Generation_Page.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Visualisation_Page.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Training_Page.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Results_Page.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Desktop_View.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Phone_and_Tablet_View.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Phone_and_Tablet_View_of_Progress_Bar.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Preprocessing_Page_Overview.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Data_Preview_Overview.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Data_Sorting_Arrows.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Download_Prepr_cessed_Data_Button.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/OHLC_Chart.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Graph_1.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Graph_2.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Function_Buttons.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Graph_3.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Line_Chart.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Welcome_Page.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Collection_Page.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Data_Generation_Page.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Preprocessing_Page_Overview.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Data_Preview_Overview.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Download_Prepr_cessed_Data_Button.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Average_Line_Chart.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Modelling_page.png">
+<meta property="og:image" content="http://example.com/2024/09/10/automl/Results_Page1.png">
+<meta property="article:published_time" content="2024-09-10T10:27:52.000Z">
+<meta property="article:modified_time" content="2024-09-11T02:29:28.075Z">
+<meta property="article:author" content="Leo Zhang">
+<meta property="article:tag" content="automl">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="microservices">
+<meta property="article:tag" content="data pipeline">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2024/09/10/automl/Overview.png">
+  
+  
+  
+  <title>Building FinTech Microservices for Data Analytics and Automated Machine Learning - Leo Zhang</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"mh2xngAFbTOk1512fn1Z1NZh-gzGzoHsz","app_key":"7kYqQuCIKAe8dm4sj40HSobk","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Leo Zhang</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Building FinTech Microservices for Data Analytics and Automated Machine Learning"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-09-10 20:27" pubdate>
+          September 10, 2024 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          582 words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          3 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> views
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Building FinTech Microservices for Data Analytics and Automated Machine Learning</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><strong>Overview</strong><br>In the project, our team created four types of microservices for data collection, pre-processing, visualisation and modelling. These microservices are flexible and can be utilised to build data pipelines for different applications such as stock pricing prediction and weather forecasting. According to the client’s requirement, the microservices are just Python functions.</p>
+<img src="/2024/09/10/automl/Overview.png" srcset="/img/loading.gif" lazyload class title="Overview">
+
+<p><strong>Project Goals</strong></p>
+<ol>
+<li>All microservices must be developed in Python, reusable and well-documented.</li>
+<li>All services must be executed by a common user Interface (UI) using the same workflow.</li>
+<li>Build multiple microservices and combine microservices into a meaningful application (data pipeline: execute microservices in series). At least two data pipelines should be implemented. At least one microservice can be used by more than one data pipeline.</li>
+<li>At least one data pipeline is related to AutoML applications.</li>
+<li>Combine at least two different but related datasets in one data pipeline.</li>
+<li>The microservices should be flexible enough to handle different inputs or generate different results by changing the parameters.<br><strong>System Architecture</strong><img src="/2024/09/10/automl/System_Architecture.png" srcset="/img/loading.gif" lazyload class title="System Architecture">
+<strong>System Functionalities</strong><br><strong>Collection</strong></li>
+<li>Data Retrieval from API<br>The microservice allows users to fetch data from external Yahoo Finance API. Users can<br>specify the API parameters, like ticker, start date and end date to retrieve the required data.<br>The microservice employs secure and efficient communication protocols to ensure the<br>confidentiality and integrity of the data during the retrieval process.</li>
+<li>User upload dataset<br>To make a finance related model (e.g stock price prediction) usually requires years of data.<br>Fetching data from API every time could be time consuming. Hence, the collection<br>microservice also allows users to upload their own dataset for further processing.</li>
+<li>Saving to Load Storage<br>Upon successful retrieval or upload, the data is securely stored in microservice local storage.<br>This ensures the availability and durability of the data for further processing.</li>
+<li>Data Transformation into Pandas DataFrame<br>The retrieved data is transformed into a Pandas DataFrame, a powerful and widely used<br>data manipulation tool in Python. The transformation process is optimised for efficiency to<br>handle large datasets.</li>
+<li>Local Copy for User Download<br>To enhance user experience, the microservice allows users to download a local copy of the<br>collected data. Users can choose the desired format (e.g., CSV, ADAGE) for the downloaded<br>file. The microservice ensures data integrity during the download process and provides<br>users with prompt feedback on the status of their download requests.</li>
+</ol>
+<p><strong>Pre-processing</strong></p>
+<ol>
+<li>Data Cleaning<br>The preprocessing microservice in our AutoML platform encompasses a broad range of<br>functionalities, specifically designed to tackle complex data quality issues. Within the data<br>cleaning section, two key features are prominently available: ‘Remove Null Values’ and<br>‘Remove Duplicates’. We have meticulously developed custom functions for these features,<br>aptly named remove_null and remove_duplicate, respectively. Users can effortlessly remove<br>null values and duplicates from their dataset with just a single click on the respective<br>buttons.</li>
+</ol>
+<img src="/2024/09/10/automl/Data_Cleaning_Buttons.png" srcset="/img/loading.gif" lazyload class title="Data Cleaning Buttons">
+
+<ol start="2">
+<li>Data Filtering<br>The Data Filtering section of the platform empowers users to refine their dataset effectively<br>by offering two significant functionalities: filtering by date range and dropping columns. Users<br>can specify a start and end date to filter their data within a certain period, and they also have<br>the option to exclude specific data dimensions by dropping columns. This flexibility allows<br>users to concentrate on the data that is most relevant and crucial for their subsequent<br>analysis. To facilitate these features, we have developed custom functions named date_filter<br>and drop_column, specifically tailored to execute these tasks efficiently.</li>
+</ol>
+
+
+<ol start="3">
+<li>Data Transformation<br>The data transformation microservices focus on preparing and manipulating data for<br>analysis. This involves unpacking, aggregating, and filling missing data in time series.<br>3.1 Unpacking Dictionary Columns<br>The function is designed to expand dictionary-like data within a DataFrame column into<br>separate columns. This is crucial for extracting nested information, such as sentiments, from<br>a single column.<br>3.2 Average Column Calculation<br>For example, if the column is sentiment, then the function computes the average sentiment<br>for each date. It groups data by date and calculates the mean of each sentiment column,<br>which is essential for time-series analysis. In this case the daily sentiment averages can<br>indicate market trends.<br>3.3 Data Filling Strategies<br>The functions address missing data in time series. Forward filling replicates the last known<br>data point, and zero filling inserts zeros. These methods are vital for maintaining the<br>continuity of time series data.</li>
+</ol>
+<p><strong>Visualisation</strong></p>
+<ol>
+<li>Generation page<br>Data generation is an essential step before visualisation. Once the data has been loaded<br>and verified, they can be passed into the visualisation functions we create (will be discussed<br>later), producing intuitive candle plots and line plots. Our visualisation tools, such as the time<br>slider below the chart, further enhance the user experience, allowing users to focus on a<br>specific time frame to explore detailed changes in stock prices.<br>When integrating the “data generation” section of the report, we emphasise the technical<br>details of data preprocessing and loading, as well as how to turn this data into a visual table.<br>1.1 Data Collection<br>In order to improve the effectiveness and accuracy of our visualisation module, we have<br>introduced data generation steps in the AutoML platform. This step focuses on the<br>acquisition and pre-processing of raw stock data, through to the final loading and display.<br>The screenshot shown below is the data generation page on our platform, which shows the<br>stock data in tabular form.</li>
+</ol>
+<img src="/2024/09/10/automl/Data_Generation_Page.png" srcset="/img/loading.gif" lazyload class title="Data_Generation_Page">
+
+<p>Our system is designed with reusability in mind. For example, the call to the render_template<br>function gives us the flexibility to use the same data table component for different data sets<br>and pages. This modular approach makes the platform easy to maintain and extend.<br>On the back end, the &#x2F;generation routing code handles the entire process from file deletion,<br>data reading, and template rendering. Error handling mechanisms are included in this<br>process to ensure robustness, for example, if the preprocessed file does not exist, we try to<br>delete it to avoid redundancy and potential data inconsistencies.</p>
+<ol start="2">
+<li>Visualisation Page<br>In the modern FinTech space, data visualisation plays an important role in helping users<br>understand complex data. The purpose of this report is to detail the visualisation module in<br>our project, which focuses on converting stock market data into intuitive charts and graphs to<br>help users better understand the dynamics of the stock market.<br>Combined with data filtering and transformation steps, our visual microservices generate<br>graphs that reflect the most relevant data insights.</li>
+</ol>
+<img src="/2024/09/10/automl/Visualisation_Page.png" srcset="/img/loading.gif" lazyload class title="Visualisation_Page">
+
+<p>We use the Plotly graph library to create intuitive charts based on filtered and transformed<br>data sets, such as candle charts and line charts, which visually show fluctuations and trends<br>in stock prices and market sentiment.</p>
+<p><strong>Modelling</strong></p>
+<ol>
+<li>AutoML<br>The model microservices are designed to automate the process of forecasting time series<br>data using AutoGluon (Shchur et al., 2023). It primarily focuses on predicting future values<br>based on historical data, which is crucial in various domains like stock market analysis,<br>weather forecasting.</li>
+<li>Data Preparation for AutoML<br>Function divides the dataset into training and testing sets based on a specified date column<br>and test rate. This is crucial for evaluating the model’s performance on unseen data.<br>Function standardises the column names, ensuring consistency and compatibility with the<br>AutoGluon library.</li>
+<li>Model Training<br>Function utilises the TimeSeriesPredictor from AutoGluon, which trains a model to predict<br>future values of a specified target column for a given number of days ahead. This can be<br>used for training the model with training dataset, as well as refitting the model with full<br>dataset.</li>
+<li>Logger<br>Helper class and functions for monitoring the progress of AutoML training, which count the<br>number of logs and smooth the percentage of progress bar.</li>
+</ol>
+<img src="/2024/09/10/automl/Training_Page.png" srcset="/img/loading.gif" lazyload class title="Training_Page">
+
+<ol start="5">
+<li>Model Evaluation<br>Function generates leaderboards using the trained models on both the test and full datasets.<br>This provides insights into the model’s performance and helps in selecting the best model for<br>prediction.</li>
+<li>Forecasting<br>Function makes predictions on new data, outputting a dataframe for future trends.</li>
+</ol>
+<img src="/2024/09/10/automl/Results_Page.png" srcset="/img/loading.gif" lazyload class title="Results_Page">
+
+<p><strong>User Interface and User experience</strong><br>AutoML is designed by considering responsive, reusable and meaningful screens and<br>components. All the components and screens are responsive to desktop, tablet and mobile<br>devices.</p>
+<ol>
+<li>Responsiveness<br>The user interface of AutoML web app accommodates major platforms which can run web<br>apps including Desktop, Tablet and mobile below are the screenshots of the same<br>Here you can see that the buttons and the content changes its orientation and adapts to the<br>respective view.<br>The respective row layout in the desktop view changes into column</li>
+</ol>
+<img src="/2024/09/10/automl/Desktop_View.png" srcset="/img/loading.gif" lazyload class title="Desktop_View">
+
+<img src="/2024/09/10/automl/Phone_and_Tablet_View.png" srcset="/img/loading.gif" lazyload class title="Phone_and_Tablet_View">
+
+<ol start="2">
+<li>Common Components &#x2F; Adaptive Components<br>AutoML app heavily leverages Common and adaptive components at wherever necessary<br>to maintain consistency and code reuse for the code bases<br>Consistency: By employing common components, AutoML maintains a consistent look and<br>feel. This uniformity helps in maintaining the same user experience throughout the app while<br>ensuring that the user interface is coherent and intuitive. Moreover standardising practices<br>and conventions across different parts of the application.<br>Leveraging Code Reuse: The use of adaptive and common components promotes the<br>reuse of code leading towards more efficient development process, quicker turnaround times<br>for new features, and fewer errors, as well-tested components are reused rather than<br>creating new components for example the tables and buttons are using a shared under the<br>hoods the table which is displayed in 5 screens hence is the same component and the<br>buttons through the app<br>Easier to Maintain and Upgrade: Since our web app relies on reusable components,<br>maintaining and updating the application becomes simpler. Modifications or improvements<br>made to a common component automatically propagate to all parts of the application which<br>are using the same components resulting in reduction of time and effort needed to<br>implement changes across the application.<br>Adaptable and scalable: Adaptive components allow the application to be more flexible and<br>scalable. They can adjust to different contexts and requirements, making the application more robust and versatile. Like we have adapted the table component in all the five screens<br>and we can also scale the table to use either a data frame or a csv.</li>
+</ol>
+<img src="/2024/09/10/automl/Phone_and_Tablet_View_of_Progress_Bar.png" srcset="/img/loading.gif" lazyload class title="Phone_and_Tablet_View_of_Progress_Bar">
+
+<ol start="3">
+<li>Preprocessing<br>3.1 Preprocessing Page Overview<br>The AutoML platform features a dedicated preprocessing page that enables users to easily<br>clean, filter, sort, and transform data for further analysis and modelling. The platform<br>seamlessly integrates front-end interactivity with robust back-end processing. The<br>user-friendly web interface comprises three clearly defined sections: Data Cleaning, Data<br>Filtering, and Data Preview, which show users the immediate impact of their preprocessing<br>actions.</li>
+</ol>
+<img src="/2024/09/10/automl/Preprocessing_Page_Overview.png" srcset="/img/loading.gif" lazyload class title="Preprocessing_Page_Overview">
+
+<p>3.2 Data Preview<br>The Data Preview section displays the data table, where users can view the generated data<br>from the previous generation page and see the results after applying preprocessing features.<br>This section shows the immediate effect of their preprocessing actions, granting users<br>control over their data. Additionally, users have the option to select the number of entries<br>they wish to display and can search for keywords within the dataset using the provided<br>search box.</p>
+<img src="/2024/09/10/automl/Data_Preview_Overview.png" srcset="/img/loading.gif" lazyload class title="Data_Preview_Overview">
+
+<p>3.3 Data Sorting<br>To enhance user experience and interactivity in the UI, each column in the displayed table is<br>accompanied by arrows for sorting. An upward arrow next to a column name enables the<br>user to sort that column in ascending order, while a downward arrow facilitates sorting in<br>descending order. This feature allows users to quickly and efficiently organise their data in<br>the desired order, simply by clicking on the respective arrow beside each column header.</p>
+<img src="/2024/09/10/automl/Data_Sorting_Arrows.png" srcset="/img/loading.gif" lazyload class title="Data_Sorting_Arrows">
+
+<p>3.4 Preprocessing Results<br>The preprocessed data is ultimately displayed in a table in the Data Preview section, ready<br>for further visualisation, analysis, and modelling purposes. Users also have the option to<br>download the preprocessed data by clicking on the button labelled ‘Download Preprocessed<br>Data’.</p>
+<img src="/2024/09/10/automl/Download_Prepr_cessed_Data_Button.png" srcset="/img/loading.gif" lazyload class title="Download_Prepr_cessed_Data_Button">
+
+<ol start="4">
+<li>Visualisation<br>Users can choose to generate an OHLC chart or a line chart table by clicking a button on the<br>interface.</li>
+</ol>
+<img src="/2024/09/10/automl/OHLC_Chart.png" srcset="/img/loading.gif" lazyload class title="OHLC_Chart">
+
+<p>4.1 OHLC chart<br>In the OHLC chart, you see the picture below</p>
+<img src="/2024/09/10/automl/Graph_1.png" srcset="/img/loading.gif" lazyload class title="Graph_1">
+
+<p>Each candlestick represents a day’s stock price, and when you hover over a particular day, it<br>will show the day’s date and the average stock price for that day.</p>
+<img src="/2024/09/10/automl/Graph_2.png" srcset="/img/loading.gif" lazyload class title="Graph_2">
+
+<p>On the top right of the picture you can see a row of function buttons. If you want to save the<br>image locally you can click on the camera button and the image will be saved in png format<br>on your computer, the pan button allows you to select the portion of the stock price date you<br>want to select then zoom in, the box select and lasso select allow you to select any area of<br>the image you want, there is also zoom in and zoom out functionality and the ability to reset<br>the entire image.</p>
+<img src="/2024/09/10/automl/Function_Buttons.png" srcset="/img/loading.gif" lazyload class title="Function_Buttons">
+
+<p>The sliders underneath allow you to shorten or zoom in on the time period you want to<br>observe. Of course, if you find the price changes of a certain period is interesting and you<br>want to analyse it quickly by selecting this period of the chart, you just need to select the part<br>of the chart you are interested in with your mouse and it will be zoomed in automatically on<br>the period you have selected, if you want to go back to the original chart, you just need to<br>double-click on the mouse and you will be able to return to the original chart.</p>
+<img src="/2024/09/10/automl/Graph_3.png" srcset="/img/loading.gif" lazyload class title="Graph_3">
+
+<p>4.2 Line chart<br>Similarly, all of the above features are also available on the line chart if you choose to use it,<br>which gives you a more visual picture of the trend of the selected stock over the time period.<br>Each type of chart is designed for specific user needs, whether it is to analyse in depth the<br>specific performance of a single stock or to observe the overall trend of the stock price.</p>
+<img src="/2024/09/10/automl/Line_Chart.png" srcset="/img/loading.gif" lazyload class title="Line_Chart">
+
+<p>Our visualisation module plays a key role in making stock market data analysis more intuitive<br>and user-friendly. It is not only suitable for professional investors, but also provides value to<br>ordinary stock market enthusiasts. In the future, we plan to continue optimising the module<br>by introducing more interactive features and chart types to meet a wider range of user<br>needs.</p>
+<p><strong>Implementation Challenges</strong><br>High level framework vs Customised UI<br>In the project proposal, we planned to use Streamlit for front-end UI implementation.<br>Streamlit is an innovative and user-friendly Python library that simplifies the process of<br>creating interactive web applications for data science and machine learning. With Streamlit,<br>developers can transform data scripts into shareable web apps with just a few lines of code,<br>eliminating the need for extensive web development expertise.<br>However, as a high level UI framework, the simplicity comes with a cost being very difficult to<br>customise for use, it does not provide enough flexibility. For instance, in our AutoML<br>platform, users use our microservices to form a pipeline. Streamlit does not have a pipeline<br>like navigation bar. It only allows users to navigate using sidebars. It is a viable<br>implementation for users to navigate, but it is not a user friendly solution.<br>Hence, we created a new battle plan and decided to switch to Flask for the front-end. Flask<br>allows us to write customised HTML UI templates with JQuery. We made the decision after<br>the first demonstration, therefore, during the second sprint, we faced a challenge of<br>refactoring sprint one UI to Flask and finishing sprint two on time. To tackle the challenge, we<br>fully utilised the flexible week to have coding sessions to increase our work efficiency and<br>quality. Coding session helped us to quickly refactored the code to Flask and left us enough<br>time for sprint two development.<br>Team Programming Version Control<br>Team based projects are profoundly different from individual projects. In an individual<br>project, one person could code any part of the project in any way and any time preferred.<br>However, team based coding is more complicated. It requires all team members to adhere to<br>the correct version control method.<br>For most team members, it was the first time using JIRA for project management and<br>working on a real-life-like project. Members had no ideas how to utilise Git properly to control<br>code versions. For instance, one member needs to create a branch to make modifications or<br>develop new features, then create a Pull Request to merge changes into the main branch.<br>The correct workflow ensures new code has good quality and can be safely merged into the<br>main branch. At the beginning of the project, without using the correct Git workflow, the<br>coding progress was strongly influenced by the problem. Team members had to share and<br>check progress using team chat.<br>To resolve the problem, we hosted a meeting to familiarise ourselves with Git workflow. We<br>ensured everyone can use JIRA for user story and branch creation, know how to create Pull<br>Requests and approve then merge other’s Pull Requests. After the meeting, we successfully<br>resolved this challenge, we could maximise our efficiency to increase the project quality.</p>
+<p><strong>Third Party Libraries</strong><br><em><strong>Flask</strong></em><br>Pallets. (n.d.). Pallets&#x2F;flask: The Python Micro Framework for building web<br>applications. GitHub. <a target="_blank" rel="noopener" href="https://github.com/pallets/flask/">https://github.com/pallets/flask/</a><br>We used Flask for UI implementation. One standout feature about Flask is that it allows us to<br>create UI templates. In our AutoML platform, we need to use tables to visualise data to<br>users. With the help of UI components, we could implement one table template and reuse it<br>in different pages. This modular design not only enhances code readability but also<br>simplifies updates and modifications.<br>In our project, we used Flask for routing, each microservice has one endpoint, calling the<br>endpoint brings users to corresponding pages. We created two types of UI templates. The<br>first type is components, which are reusable minimum elements for User Interface. The<br>second type is pages, which contain components to form endpoint corresponding pages.<br><em><strong>Pandas</strong></em><br>Pandas-Dev. (n.d.). Pandas-dev&#x2F;Pandas: Flexible and powerful data analysis &#x2F;<br>manipulation library for python, providing labelled data structures similar to R<br>data.frame objects, statistical functions, and much more. GitHub.<br><a target="_blank" rel="noopener" href="https://github.com/pandas-dev/pandas">https://github.com/pandas-dev/pandas</a><br>Pandas is an open-source Python library which is extensively used for data manipulation<br>and analysis. It provides data structures and functions to efficiently handle and analyse<br>structured data. We have utilised Pandas in our AutoML platform for various microservices<br>including collection, model, preprocessing, and even within our Flask app code.<br>Pandas plays a crucial role in our AutoML platform, due to its efficiency, adaptability, and<br>strong capabilities in handling data. Its features align seamlessly with the requirements of<br>data analysis and automated machine learning, making it an essential tool in our system.<br><em><strong>Plotly</strong></em><br>Plotly. (n.d.). Plotly&#x2F;plotly.py: The Interactive Graphing Library for Python this project<br>now includes Plotly Express!. GitHub. <a target="_blank" rel="noopener" href="https://github.com/plotly/plotly.py">https://github.com/plotly/plotly.py</a><br>Plotly is an open source graphics library for creating interactive charts and data<br>visualisations. It supports several programming languages, including Python, R, Julia, and<br>JavaScript. Plotly makes it easy for users to build complex graphs, increasing the<br>intuitiveness of data analysis and user interaction.<br><em><strong>AutoGluon</strong></em><br>Shchur, O., Turkmen, C., Erickson, N., Shen, H., Shirkov, A., Hu, T., &amp; Wang, Y. (2023,<br>August 10). Autogluon-timeseries: Automl for probabilistic time series forecasting.<br>arXiv.org. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2308.05566">https://arxiv.org/abs/2308.05566</a><br>AutoGluon is an AutoML Library for Image, Text, Time Series, and Tabular Data. In this<br>project we used the time series forecasting functionality.<br><em><strong>Yfinance</strong></em><br>yfinance: Download market data from Yahoo! Finance’s API. GitHub.<br><a target="_blank" rel="noopener" href="https://github.com/ranaroussi/yfinance">https://github.com/ranaroussi/yfinance</a><br>Yfinance is an open-source publicly available API, it allows us to fetch financial data to<br>conduct research.<br>The API is easy to use, with a ticker, a start date and an end date, it allows users to fetch<br>stock data. The API is free to use and reliable.<br><strong>User Manual</strong><br><em><strong>Installation</strong></em></p>
+<ol>
+<li>Prerequisite: Before beginning the installation, ensure Python 3.10 is installed on your<br>system. This is an essential step for the proper functioning of the application.</li>
+<li>Clone the Repository: The first step involves cloning the repository to your local machine.<br>This action copies all the necessary files you need to start setting up the application.</li>
+<li>Navigation to Project Directory: Once the repository is cloned, open a terminal or<br>command prompt. Navigate to the project directory by executing the command:<br>cd app<br>This will change your current directory to the project folder.</li>
+<li>Installing Required Packages: In the project directory, you need to install several<br>dependencies. This is done using pip, Python’s package installer, with the following<br>command:<br>pip install -r requirements.txt<br>This command reads the ‘requirements.txt’ file and installs all the packages listed there.</li>
+<li>Install AutoGluon: AutoGluon is an essential component of our application. Follow the<br>installation guide available at AutoGluon’s official installation page<br>(<a target="_blank" rel="noopener" href="https://auto.gluon.ai/stable/install.html">https://auto.gluon.ai/stable/install.html</a>) to install this package.<br><strong>Running the Application</strong></li>
+<li>Activating the Python Environment: Before running the application, ensure the Python<br>environment where you installed the dependencies is activated.</li>
+<li>Starting the Application: To start the application, run the Flask app with debugging mode<br>enabled. This can be done by executing the following command in the terminal:<br>flask –app app.py –debug run<br>This command starts the Flask server with the application, allowing you to access it through<br>a web browser.<br><strong>Understanding the Project Structure</strong><br>The project organised for easy navigation and modification:<br>● app Directory: Contains the main application and modules for various microservices.<br>○ helpers: Includes utility scripts and helper functions that assist in various<br>tasks.<br>○ microservices : Contains services for data collection, modelling,<br>preprocessing, results, and visualisation.<br>○ ui: Hosts user interface components and HTML pages for different<br>functionalities.<br>● app.py: This is the main Python file used to run the Flask application.<br>● setup&#x2F;Requirements.txt: Lists all the dependencies required for the project.<br>● README.md: Contains detailed setup instructions and additional information about<br>the project.<br>Usage</li>
+<li>After landing on the welcome page, click on the ‘Get Started’ button.</li>
+</ol>
+<img src="/2024/09/10/automl/Welcome_Page.png" srcset="/img/loading.gif" lazyload class title="Welcome_Page">
+
+<ol start="2">
+<li>The user will be directed to the Collection page of the AutoML platform. The user can<br>choose to fetch data from an API or upload a local dataset by clicking on the respective<br>buttons. To fetch data from the API, use ‘AAPL’ as the ticker, input preferred start and end<br>dates, and use ‘demo’ as the API Token.</li>
+</ol>
+<img src="/2024/09/10/automl/Collection_Page.png" srcset="/img/loading.gif" lazyload class title="Collection_Page">
+
+
+<ol start="3">
+<li>The fetched data is displayed on the Generation page. The user can choose to download<br>the data or download ADAGE by clicking on the respective buttons</li>
+</ol>
+<img src="/2024/09/10/automl/Data_Generation_Page.png" srcset="/img/loading.gif" lazyload class title="Data_Generation_Page">
+
+<ol start="4">
+<li>On the Preprocessing page, the user can clean the data by removing null values and<br>duplicates using the ‘Remove Null Values’ and ‘Remove Duplicates’ buttons respectively.<br>Furthermore, the data can be filtered based on a specified date range and unnecessary<br>columns can be excluded using the provided data filtering features.<br>The preprocessed data is displayed in a table format in the data preview section. The data<br>can be sorted in either ascending or descending order using the arrows provided beside the<br>column names in the table. The user can also choose to download the preprocessed data by<br>clicking the ‘Download Preprocessed Data’ button.</li>
+</ol>
+<img src="/2024/09/10/automl/Preprocessing_Page_Overview.png" srcset="/img/loading.gif" lazyload class title="Preprocessing_Page_Overview">
+
+
+
+<img src="/2024/09/10/automl/Data_Preview_Overview.png" srcset="/img/loading.gif" lazyload class title="Data_Preview_Overview">
+
+<img src="/2024/09/10/automl/Download_Prepr_cessed_Data_Button.png" srcset="/img/loading.gif" lazyload class title="Download_Prepr_cessed_Data_Button">
+
+<ol start="5">
+<li>After the user is satisfied with pre-processed data, the user can navigate to the<br>visualisation page. Two plots about the dataset will be generated. The first one is the OHLC<br>chart, which shows the user the key stock price of a day (e.g. low, high). The second one is<br>an average line chart, which shows the user the average stock price for each day.</li>
+</ol>
+<img src="/2024/09/10/automl/Average_Line_Chart.png" srcset="/img/loading.gif" lazyload class title="Average_Line_Chart">
+
+<ol start="6">
+<li>After the dataset is prepared, the user can navigate to the modelling page. In the<br>modelling page, the user will have a dropdown list of each column in the dataset. The user<br>can choose one column they want to predict and number of days to predict. Finally, with one click on the start button, the AutoML will handle the rest (e.g. train Time Series Model to<br>predict).</li>
+</ol>
+<img src="/2024/09/10/automl/Modelling_page.png" srcset="/img/loading.gif" lazyload class title="Modelling_page">
+
+<p>While the models are being trained, the user will see a progress bar to know when the<br>training will be finished and be able to see results.<br>7. Ultimately, when the training is finished, the user can navigate to the result page and view<br>detailed results from each model. Models will be sorted in performance order from the most<br>accurate to the least accurate.<br>Moreover, the user can also view predicted results from each model by choosing the model<br>from the dropdown bar. Then click the ‘start predicting’ button to show all predictions.</p>
+<img src="/2024/09/10/automl/Results_Page1.png" srcset="/img/loading.gif" lazyload class title="Results_Page1">
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Machine-Learning/" class="category-chain-item">Machine Learning</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Machine-Learning/Data-Analytics/" class="category-chain-item">Data Analytics</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/automl/" class="print-no-link">#automl</a>
+      
+        <a href="/tags/Python/" class="print-no-link">#Python</a>
+      
+        <a href="/tags/microservices/" class="print-no-link">#microservices</a>
+      
+        <a href="/tags/data-pipeline/" class="print-no-link">#data pipeline</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Building FinTech Microservices for Data Analytics and Automated Machine Learning</div>
+      <div>http://example.com/2024/09/10/automl/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Leo Zhang</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 10, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/09/06/airbrb/" title="How I Built the AirBrB with ReactJS">
+                        <span class="hidden-mobile">How I Built the AirBrB with ReactJS</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"mh2xngAFbTOk1512fn1Z1NZh-gzGzoHsz","appKey":"7kYqQuCIKAe8dm4sj40HSobk","path":"window.location.pathname","placeholder":"‘say something’","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       E-mail:<a href="mailto:leozhang070899@gmail.com"> leozhang070899@gmail.com</a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        Views: 
+        <span id="leancloud-site-pv"></span>
+        
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        Visitors: 
+        <span id="leancloud-site-uv"></span>
+        
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
