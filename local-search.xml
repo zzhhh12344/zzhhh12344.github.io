@@ -4,6 +4,41 @@
   
   
   <entry>
+    <title>Predict student performance from game play</title>
+    <link href="/2024/09/22/predict-perform/"/>
+    <url>/2024/09/22/predict-perform/</url>
+    
+    <content type="html"><![CDATA[<p><strong>Introduction</strong></p><p>With the increasing adoption of game-based learning in education, students are now engaging with dynamic and interactive educational games that enhance the learning experience. However, many platforms still lack efficient ways to track individual knowledge progress. The “Predict Student Performance from Game Play” project aimed to bridge this gap by predicting student responses to in-game questions based on gameplay data, contributing to the research on knowledge tracking in educational games. This was a Kaggle competition task that focused on time-series prediction, using cutting-edge machine learning and deep learning models.</p><p><strong>Project Objective</strong></p><p>The objective was simple yet challenging: predict whether players would answer 18 specific questions correctly (Yes or No) by analyzing time-series data generated from an online educational game. The evaluation metric used was the F1-score, a harmonic mean of precision and recall that is particularly useful in binary classification tasks.</p><p><strong>Challenges</strong></p><p>The competition required real-time predictions using Kaggle’s time-series API, and hidden test data was released in groups, with no access to future data points. Predictions were required at three key checkpoints: levels 4, 12, and 22. This design meant that models had to be both accurate and responsive to ensure success across all questions.</p><p><strong>Methodology</strong></p><p>To tackle this task, the team developed 18 distinct models—one for each question. These models were trained based on different level groupings:</p><p>Levels 0–4 to predict questions 1 to 3 (3 models)<br>Levels 5–12 to predict questions 4 to 13 (10 models)<br>Levels 13–22 to predict questions 14 to 18 (5 models)<br>This division allowed the models to focus on data relevant to specific stages in the game, improving their accuracy. All feature engineering processes were grouped by session_id and level_group, enabling the models to track the progress of individual players.</p><p><strong>Feature Engineering</strong></p><p>Feature engineering played a pivotal role in this project, as it provided the data needed for accurate predictions. The following steps were taken:</p><p>Calculated the sum, mean, and standard deviation of each event name.<br>Analyzed actions related to event names (binary encoding: 1 or 0).<br>Calculated unique values in text-related columns such as fqid and text_fqid.<br>Extracted statistical information (quantile, mean, min, max, std) from numerical columns.<br>Used advanced techniques like Principal Component Analysis (PCA) and K-means clustering to generate additional features.<br>In total, nearly 600 features were crafted to improve the models’ predictive power.</p><p><strong>Models and Hyperparameter Tuning</strong></p><p>Two types of models were employed in this project:</p><p>Gradient Boosted Decision Trees (GBDT): XGBoost and LightGBM, which are known for their high performance in structured data problems.<br>Deep Learning: Wide and Deep Networks, designed to capture both linear and complex interactions in the data.<br>To fine-tune the models, the team used GroupKFold cross-validation and Optuna, a state-of-the-art hyperparameter optimization library. Model ensembling (combining XGBoost and LightGBM) was also implemented to improve overall performance.</p><p><strong>Results</strong></p><p>The model performance was evaluated using local cross-validation with GroupKFold (n_split&#x3D;3). Here’s a summary of the key results:</p><p>Traditional feature engineering (XGBoost): F1-score &#x3D; 0.685<br>After adding PCA: F1-score &#x3D; 0.687<br>After adding K-means clustering: F1-score &#x3D; 0.688<br>XGBoost model: F1-score &#x3D; 0.688<br>LightGBM model: F1-score &#x3D; 0.686<br>Wide and Deep Networks: F1-score &#x3D; 0.631<br>Model combination (XGBoost and LightGBM): F1-score &#x3D; 0.689<br>The final choice was a model combination of XGBoost and LightGBM, which achieved an impressive F1-score of 0.688 on Kaggle’s hidden test data.</p><p><strong>Conclusion</strong></p><p>This project demonstrated the power of feature engineering and model ensembling in improving the performance of machine learning models. The use of advanced techniques like PCA, K-means clustering, and Optuna for hyperparameter optimization proved to be highly effective in a real-time, game-based learning environment. While deep learning models underperformed compared to GBDT models, the combination of XGBoost and LightGBM delivered the best results. This approach offers promising directions for future research into knowledge tracking for game-based learning platforms.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Machine Learning</category>
+      
+      <category>Deep Learning</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Python</tag>
+      
+      <tag>XGBoost</tag>
+      
+      <tag>Lightgbm</tag>
+      
+      <tag>GroupKFold</tag>
+      
+      <tag>Feature Engineering</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Building FinTech Microservices for Data Analytics and Automated Machine Learning</title>
     <link href="/2024/09/10/automl/"/>
     <url>/2024/09/10/automl/</url>
