@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>DBMS</title>
+    <link href="/2024/09/22/DBMS/"/>
+    <url>/2024/09/22/DBMS/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Predict student performance from game play</title>
     <link href="/2024/09/22/predict-perform/"/>
     <url>/2024/09/22/predict-perform/</url>
@@ -57,9 +70,9 @@
     
     <tags>
       
-      <tag>automl</tag>
-      
       <tag>Python</tag>
+      
+      <tag>automl</tag>
       
       <tag>microservices</tag>
       
@@ -91,31 +104,6 @@
       <tag>html</tag>
       
       <tag>react</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>测试文章</title>
-    <link href="/2021/06/10/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
-    <url>/2021/06/10/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
-    
-    <content type="html"><![CDATA[<p>这是一篇测试文章</p><p>Introduction<br>AirBrB is a property rental platform inspired by Airbnb, allowing users to list, search, and book properties. In this project, I focused on building the frontend using ReactJS. The goal was to create a responsive single-page application (SPA) that interacts with a backend API, offering features like user authentication, property listing management, booking capabilities, and advanced search filters.</p><p>Project Overview</p><ol><li>User Authentication<br>The platform supports user authentication, allowing users to register, log in, and log out. Once logged in, users can access additional features like creating and managing listings, as well as booking properties.</li></ol><p>Login Page: Allows users to input their email and password.<br>Registration Page: Users provide their name, email, password, and confirm their password.<br>Logout Functionality: The logout button is available on all pages when the user is logged in.</p><ol start="2"><li>Creating &amp; Managing Listings<br>Once logged in, users (hosts) can create property listings. They can manage their listings through a dashboard, where they can edit or delete existing properties. Listings become visible to other users once published.</li></ol><p>Hosted Listings Screen: Displays all listings created by the user, showing details like property type, number of beds, price, etc.<br>Create Listing: Allows users to provide details such as title, address, price, and amenities.<br>Edit Listing: Users can update their existing listings.<br>Delete Listing: Users can remove listings they no longer want to display.</p><ol start="3"><li>Viewing &amp; Searching Listings<br>All users, whether logged in or not, can browse property listings. The platform provides filters to help narrow down results based on user preferences, such as price, number of bedrooms, and availability.</li></ol><p>Listings Screen: Displays all available (published) listings, showing the title, price, images, and reviews.<br>Search Filters: Users can filter listings based on title, city, price range, number of bedrooms, and availability dates.<br>Sorting: Users can sort listings by review ratings, making it easier to find highly-rated properties.</p><ol start="4"><li>Booking a Listing<br>Logged-in users can select a property and book it. Users choose a date range for their stay and confirm the booking. The booking is then processed by the backend.</li></ol><p>Booking Functionality: Users select dates and submit a booking request.<br>View Booking Status: Users can check the status of their bookings (pending, accepted, or denied).</p><ol start="5"><li>Reviews &amp; Ratings<br>Users can leave reviews for properties they have booked. This helps future users get a better sense of the property’s quality and the host’s reliability.</li></ol><p>Leave a Review: After completing a booking, users can leave a rating and a comment for the property.<br>View Reviews: Other users can see reviews left by previous guests, including ratings and feedback.</p><p>Advanced Features</p><ol><li><p>Star Rating Breakdown<br>When hovering over the star rating, a tooltip shows the percentage of reviews in each star category. This feature is similar to rating systems seen on e-commerce platforms.</p></li><li><p>Profit Tracking<br>For property hosts, the platform provides a profit tracking graph that shows the income earned from their listings over the past month. This allows hosts to monitor their earnings.</p></li><li><p>YouTube Thumbnails<br>To make property listings more engaging, hosts can use YouTube videos as the listing thumbnail. This gives potential renters a better sense of the property with a video tour.</p></li></ol><p>Development Process<br>During development, one of the key challenges was ensuring that the frontend communicated efficiently with the provided backend API. I used React’s useState and useEffect hooks to manage state and fetch data dynamically. React Router was employed to handle navigation between different views without refreshing the page, providing a seamless user experience.</p><p>From a UI&#x2F;UX perspective, I focused on making the platform intuitive and responsive. The design was tested on different devices and screen sizes to ensure a smooth experience for both mobile and desktop users.</p><p>Conclusion<br>This project provided an in-depth learning experience in ReactJS, allowing me to build a fully functional, user-friendly application. From user authentication to booking and review systems, the AirBrB frontend offers a wide range of features. The added advanced functionality, like profit tracking and star rating breakdown, further enhances the user experience. If you have any questions about this project, feel free to reach out!</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Java</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>python</tag>
       
     </tags>
     
