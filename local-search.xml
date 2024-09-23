@@ -81,16 +81,14 @@
       
       <category>Machine Learning</category>
       
-      <category>Data Analytics</category>
-      
     </categories>
     
     
     <tags>
       
-      <tag>automl</tag>
-      
       <tag>Python</tag>
+      
+      <tag>automl</tag>
       
       <tag>microservices</tag>
       
@@ -112,7 +110,7 @@
     
     <categories>
       
-      <category>frontend</category>
+      <category>Frontend</category>
       
     </categories>
     
