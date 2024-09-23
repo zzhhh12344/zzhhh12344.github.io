@@ -4,13 +4,31 @@
   
   
   <entry>
-    <title>DBMS</title>
+    <title>Adding a Geographical Coordinate Data Type to PostgreSQL</title>
     <link href="/2024/09/22/DBMS/"/>
     <url>/2024/09/22/DBMS/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<p><strong>Introduction</strong></p><p>Geographical coordinates play a crucial role in various applications, ranging from geolocation services to geographical data analysis. However, working with geographical data types in relational databases can sometimes be limiting without the right tools. This blog explores a project designed to implement a custom geographical coordinate data type, GeoCoord, in PostgreSQL using C. The project demonstrates the process of adding a new SQL type and how to integrate it into the PostgreSQL backend.</p><p><strong>Background</strong></p><p>The aim of this project was to create a new SQL data type, GeoCoord, which could store and handle geographical coordinates (latitude and longitude) along with their directional markers (N, S, E, W) and an associated location name. Additionally, various comparison operators and a unique hashing function were implemented to allow indexing and efficient querying of the new data type.</p><p>The GeoCoord type’s design focuses on simplicity and efficiency. By allowing geographical coordinates to be stored directly within PostgreSQL, developers can perform operations such as comparison, distance calculation, and even conversion to a more human-readable Degree-Minute-Second (DMS) format directly within SQL queries.</p><p><strong>Structure of the GeoCoord Data Type</strong></p><p>The GeoCoord data type is implemented in C and represents a custom PostgreSQL datatype. The actual structure for the GeoCoord type consists of:</p><p>Latitude and longitude as floating-point values.<br>Latitude and longitude directional markers (N, S, E, W).<br>A variable-length character array to store the name of the location.</p><img src="/2024/09/22/DBMS/typedef.png" class title="typedef"><p><strong>I&#x2F;O Functions</strong></p><p>Two main functions handle the input and output of the GeoCoord data type in PostgreSQL.</p><p>Input Function (gcoord_in): This function parses a string input into the GeoCoord structure. The input consists of a location name followed by geographical coordinates (latitude and longitude). The function ensures that the input is valid and assigns the corresponding values to the structure.</p><img src="/2024/09/22/DBMS/gcoord_in.png" class title="gcoord_in"><p>Output Function (gcoord_out): This function converts the GeoCoord structure back into a string format when retrieving the data. The result includes the location name followed by latitude and longitude in degrees.</p><img src="/2024/09/22/DBMS/gcoord_out.png" class title="gcoord_out"><p><strong>Comparison Operators</strong></p><p>In addition to input and output functions, the project implements several comparison operators (&lt;, &lt;&#x3D;, &#x3D;, &gt;&#x3D;, &gt;), enabling users to perform comparisons between two GeoCoord instances. These operators compare geographical coordinates first by latitude and then by longitude. The following function handles internal comparison:</p><img src="/2024/09/22/DBMS/gcoord_com.png" class title="gcoord_com"><p><strong>Additional Features: Time Zone Comparison and DMS Conversion</strong></p><p>Two additional utility functions were implemented to extend the functionality of the GeoCoord type:</p><p>Time Zone Comparison (~ and !~ operators): These functions compare the longitude values of two GeoCoord instances to determine if they fall within the same time zone.</p><p>DMS Conversion: The convert2dms function converts the geographical coordinates from decimal format to Degrees-Minutes-Seconds (DMS) format, which is often more intuitive for humans to understand.</p><img src="/2024/09/22/DBMS/time.png" class title="time"><img src="/2024/09/22/DBMS/convert.png" class title="convert"><p><strong>Indexing Functions</strong></p><p>For performance optimization, the GeoCoord type supports both B-tree and hash indexing. This allows the efficient querying of large datasets involving geographical coordinates. The gcoord_cmp function is used for B-tree indexing, while the gcoord_hash function is used for hash indexing.</p><img src="/2024/09/22/DBMS/index.png" class title="index"><p><strong>Implementation in PostgreSQL</strong></p><p>The implementation in PostgreSQL involves creating the GeoCoord type and linking it with the corresponding C functions. This is done via SQL statements that define the new data type, operators, and functions.</p><img src="/2024/09/22/DBMS/create_type.png" class title="create_type"><p>With these functions, developers can use the GeoCoord type in PostgreSQL queries, leveraging features like comparison, time zone checking, and DMS conversion.</p><p><strong>Conclusion</strong></p><p>This project successfully demonstrates how to extend PostgreSQL with custom data types, providing enhanced functionality for geographical coordinates. The GeoCoord type allows efficient storage, comparison, and manipulation of geographic data directly within SQL queries, making it a valuable tool for applications that handle location-based data. By combining powerful C backend code with the flexibility of PostgreSQL, this project highlights the potential of custom data types in relational databases.</p><p>For those looking to work with geographical data, or to create custom PostgreSQL data types, this project serves as a comprehensive example of how to do so from scratch.</p>]]></content>
     
     
+    <categories>
+      
+      <category>DBMS</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Database</tag>
+      
+      <tag>SQL</tag>
+      
+      <tag>PostgreSQL</tag>
+      
+      <tag>C#</tag>
+      
+    </tags>
     
   </entry>
   
@@ -70,9 +88,9 @@
     
     <tags>
       
-      <tag>Python</tag>
-      
       <tag>automl</tag>
+      
+      <tag>Python</tag>
       
       <tag>microservices</tag>
       
