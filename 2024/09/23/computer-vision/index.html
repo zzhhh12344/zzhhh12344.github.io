@@ -34,8 +34,12 @@
 <meta property="og:image" content="http://example.com/2024/09/23/computer-vision/loss.png">
 <meta property="og:image" content="http://example.com/2024/09/23/computer-vision/accuracy.png">
 <meta property="og:image" content="http://example.com/2024/09/23/computer-vision/matrix.png">
+<meta property="og:image" content="http://example.com/2024/09/23/computer-vision/tur.png">
+<meta property="og:image" content="http://example.com/2024/09/23/computer-vision/pen.png">
+<meta property="og:image" content="http://example.com/2024/09/23/computer-vision/pen1.png">
+<meta property="og:image" content="http://example.com/2024/09/23/computer-vision/tur1.png">
 <meta property="article:published_time" content="2024-09-23T05:16:18.000Z">
-<meta property="article:modified_time" content="2024-09-23T05:45:04.046Z">
+<meta property="article:modified_time" content="2024-09-23T05:47:51.816Z">
 <meta property="article:author" content="Leo Zhang">
 <meta property="article:tag" content="Faster R-CNN">
 <meta property="article:tag" content="python">
@@ -251,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          339 words
+          450 words
         
       </span>
     
@@ -262,7 +266,7 @@
         
         
         
-          2 mins
+          3 mins
         
       </span>
     
@@ -349,6 +353,17 @@
 <img src="/2024/09/23/computer-vision/matrix.png" srcset="/img/loading.gif" lazyload class title="matrix">
 
 <p>For target detection: The “Faster R-CNN” model shows better performance. During the training of the network, we saved the epoch with the best effect on target recognition according to the average IoU of the model on the verification set. The IoU of the training set and the verification set of this model on the “Penguins vs Turtles” data set and the distance between the center of the prediction box and the center of the real box are shown in Table 2.<br>            IoU     	Distance<br>Train set	0.8971  	3.6045<br>Valid set	0.8775  	4.9678</p>
+<p><strong>Discussion</strong><br>Our experimental results for image classification and target detection on the “Penguins vs Turtles” dataset using the “Faster R-CNN” network perform well, demonstrating the effectiveness and potential of this approach. In this section, we discuss experimental results, method performance, and possible causes of observed failures.<br>The “Faster R-CNN” model shows excellent performance in image classification and target detection tasks. For image classification, the model achieves an accuracy of 0.9306 on the validation set, effectively distinguishing penguins and turtles based on visual features. The high accuracy indicates that the model has the ability to accurately predict and correctly classify images. In the target detection task, the “Faster R-CNN” model achieved an average IoU score of 0.8775 on the validation set. It reflects the model’s ability to accurately locate and classify penguins and turtles in images.<br>However, the real-time performance of “Faster R-CNN” is poor, because the model is larger, the parameters are more numerous, and the calculation process is more complicated. This model has excellent accuracy, but also makes the calculation rate is relatively low, the calculation time is long, no matter in the process of training or reasoning, it needs to consume a long time.<br>In addition, in this experiment, in the classification task, the model pays more attention to the posture of the object. As shown in Figure, when the movement and posture of the penguin are the same as that of the turtle, the model will recognize the penguin as a turtle, but will not recognize the penguin from the consideration of skin color and background.</p>
+<img src="/2024/09/23/computer-vision/tur.png" srcset="/img/loading.gif" lazyload class title="tur">
+<img src="/2024/09/23/computer-vision/pen.png" srcset="/img/loading.gif" lazyload class title="pen">
+
+<p>In the task of target recognition, although the model has been able to detect the location of the target well and generate a reasonable detection frame for it, in terms of details, the model is more inclined to generate a small target detection frame. As shown in the Figure, the model does not completely frame the edge part of the hand and foot of the object.</p>
+<img src="/2024/09/23/computer-vision/pen1.png" srcset="/img/loading.gif" lazyload class title="pen">
+<img src="/2024/09/23/computer-vision/tur1.png" srcset="/img/loading.gif" lazyload class title="tur">
+
+
+<p>For the above problems, we have also made corresponding explanations. Some possible reasons for the error include: a. Limited data sets: Despite the diversity of the Penguins vs Turtles dataset, it is possible that underrepresentation of certain species can lead to misclassification. b. Small or distant objects: Detection of small or distant objects can be challenging, especially if the object features are not obvious, which can lead to missing or inaccurate bounding boxes for detection.</p>
+<p><strong>Conclusion</strong><br>In this study, we explore the application of the “Faster R-CNN” architecture to image classification and target detection tasks on the “Penguins vs Turtles” dataset. The results show that the Faster R-CNN model performs well in both tasks, achieving high accuracy for image classification tasks and achieving significant average IoU scores for object detection tasks. This work has important implications for wildlife monitoring and conservation efforts, as accurately classifying and locating penguins and turtles provides valuable insights into the field of wildlife ecology.<br>Effectiveness: Faster R-CNN shows robustness and efficiency in image classification and target detection tasks. Combining area suggestion network (RPN) with object detection network helps to achieve real-time capability and high accuracy of the model.<br>Limitations: Models face challenges in detecting small or distant objects, as well as environmental occlusion. This can lead to potentially erroneous negative results and inaccuracies in bounding box predictions.<br>Recommendations for future work: To further improve the performance of the Faster R-CNN model and address the observed limitations, future work could focus on the following areas:<br>Data enhancement and collection: Enhance the dataset with more diverse transformations and collect additional data with a balanced distribution of categories and various environmental conditions to enhance the generalization of the model.<br>Hyperparameter tuning: Performing extensive hyperparameter tuning allows you to optimize model performance and adjust parameters for better results.<br>Integrated approach: By combining predictions from multiple models or architectures, you can improve overall performance and enhance robustness.<br>Transfer learning: Using models pre-trained on larger and more diverse datasets for transfer learning helps models gain knowledge from related tasks and improve performance.<br>Advanced object Detection architectures: Studying other state-of-the-art object detection architectures, such as YOLO or SSDS, may provide valuable insights and potentially improve performance.</p>
 
                 
               </div>
