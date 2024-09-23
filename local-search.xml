@@ -4,6 +4,45 @@
   
   
   <entry>
+    <title>Implementing Relational Operators and Memory Buffer Management</title>
+    <link href="/2024/09/23/DBMS2/"/>
+    <url>/2024/09/23/DBMS2/</url>
+    
+    <content type="html"><![CDATA[<p><strong>Introduction</strong></p><p>Database systems require efficient ways to manage data storage and retrieval, especially when dealing with large datasets. Key operations like selection and join must be optimized to minimize input&#x2F;output (I&#x2F;O) operations, particularly when constrained by limited memory buffers. In this project, I implemented two critical relational operators, selection and join, within the context of buffer management using a Clock-Sweep replacement policy. This blog will walk through the implementation process, highlighting key challenges and solutions.</p><p><strong>Memory Buffer Management with Clock-Sweep</strong></p><p>Memory buffers play a pivotal role in how data pages are read from disk and maintained in memory. Given a finite number of buffer slots, pages need to be managed carefully. The Clock-Sweep algorithm was implemented to handle this, where pages in the buffer are “cycled through” to determine which ones to evict when new pages need to be loaded.</p><p><em><strong>Clock-Sweep Algorithm</strong></em><br>The Clock-Sweep algorithm is simple yet effective:</p><ol><li>Each page in the buffer has a pin (indicating if the page is being used) and a usage counter (indicating recent access).</li><li>When a page is requested but not found in the buffer, the algorithm sweeps through the buffer to find a page with a pin of 0 and a usage of 0, which can be replaced.<br>In the code, request_page and release_page are responsible for handling page requests and releasing them. Here’s how a page is fetched using the Clock-Sweep strategy:</li></ol><img src="/2024/09/23/DBMS2/request.png" class title="request"><p>This ensures that pages are managed efficiently in the buffer, avoiding excessive reads from disk.</p><p><strong>Selection Operator</strong><br>The selection operator (sel) is a basic relational operation that filters rows (tuples) based on a condition. The challenge in this implementation was efficiently reading the pages from disk, checking each tuple for the condition, and storing the matching tuples.</p><p>In the code, the sel function iterates through pages of a table and checks the attribute at the specified index. If the value matches the condition, the tuple is added to the result:</p><img src="/2024/09/23/DBMS2/sel.png" class title="sel"><img src="/2024/09/23/DBMS2/sel2.png" class title="sel2"><img src="/2024/09/23/DBMS2/sel3.png" class title="sel3"><p>This function efficiently handles selection, even for large datasets, by using buffer management to minimize disk reads.</p><p><strong>Join Operator</strong><br>The join operator is more complex, as it requires combining rows from two tables based on a condition. In this project, two approaches were implemented:</p><ol><li>Sort-Merge Join when buffer slots are sufficient to load all pages into memory.</li><li>Nested Loop Join when the number of buffer slots is limited.</li></ol><p><em><strong>Sort-Merge Join</strong></em><br>When enough buffer slots are available, a sort-merge join is performed. Both tables are sorted by the join attributes, and then the sorted tables are merged:</p><img src="/2024/09/23/DBMS2/join1.png" class title="join1"><img src="/2024/09/23/DBMS2/join2.png" class title="join2"><img src="/2024/09/23/DBMS2/join3.png" class title="join3"><img src="/2024/09/23/DBMS2/join4.png" class title="join4"><p>In this approach, the sort_tuples function sorts the tuples using qsort, and the tables are merged based on the sorted order, reducing the complexity compared to the nested loop join.</p><p><em><strong>Nested Loop Join</strong></em><br>When memory is constrained, a nested loop join is employed, where one table is iterated in an outer loop, and the other table in an inner loop:</p><img src="/2024/09/23/DBMS2/join5.png" class title="join5"><img src="/2024/09/23/DBMS2/join6.png" class title="join6"><img src="/2024/09/23/DBMS2/join7.png" class title="join7"><img src="/2024/09/23/DBMS2/join8.png" class title="join8"><p>This method is less efficient but necessary when memory is limited.</p><p><strong>Efficient File Management</strong><br>File I&#x2F;O is a costly operation, so managing file pointers effectively is crucial. In this project, the number of open files was limited to a configurable value, and files were opened and closed as needed. The functions log_open_file and log_close_file were used to track file operations and ensure that the number of open files never exceeded the limit.</p><p><strong>Logging and Debugging</strong><br>Throughout the project, extensive logging was used to track key operations such as page reads, releases, and file operations. Functions like log_read_page and log_release_page were instrumental in debugging buffer and I&#x2F;O issues. This provided a clear view of when pages were being loaded and replaced in the buffer.</p><p><strong>Conclusion</strong><br>The implementation of relational operators and memory buffer management in this project highlighted the importance of efficient buffer usage and file handling in a database system. The Clock-Sweep strategy proved effective for managing pages, while the combination of sort-merge join and nested loop join provided flexibility based on available memory. Through careful buffer management and optimization, the project successfully demonstrated how database operations can be handled efficiently even with limited resources.</p><p>For those interested in database system internals, this project provides a practical look at key concepts like buffer management, file I&#x2F;O optimization, and relational operator implementation.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>DBMS</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Database</tag>
+      
+      <tag>SQL</tag>
+      
+      <tag>PostgreSQL</tag>
+      
+      <tag>C#</tag>
+      
+      <tag>Memory buffer management</tag>
+      
+      <tag>File system management</tag>
+      
+      <tag>Sort-merge join and hash join</tag>
+      
+      <tag>Database file management</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Adding a Geographical Coordinate Data Type to PostgreSQL</title>
     <link href="/2024/09/22/DBMS/"/>
     <url>/2024/09/22/DBMS/</url>
@@ -27,6 +66,12 @@
       <tag>PostgreSQL</tag>
       
       <tag>C#</tag>
+      
+      <tag>Memory management</tag>
+      
+      <tag>Function pointers</tag>
+      
+      <tag>File I/O</tag>
       
     </tags>
     
